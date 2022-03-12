@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_quotation_tree_inherit_rehla" model="ir.ui.view">
+        <field name="name">sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="trip_id"/>
+                    <field name="mobile"/>
+            </xpath>
+
+        </field>
+    </record>
+    <record id="view_automatic_rehla_record" model="ir.ui.view">
+        <field name="name">automatic.rehla.record.tree</field>
+        <field name="model">automatic.rehla.record</field>
+<!--        <field name="inherit_id" ref="rehla_march_auto.automatic_rehla_record"/>-->
+        <field name="inherit_id" ref="rehla_march_auto.automatic_rehla_record"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='start_date']" position="after">
+                    <field name="end_date" string="To Date"/>
+            </xpath>
+            <xpath expr="//field[@name='start_date']" position="replace">
+                    <field name="start_date" string="From Date"/>
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="replace">
+                    <field name="company_id" invisible="1"/>
+            </xpath>
+            <xpath expr="//button[@name='auto_confirm_all']" position="replace">
+            <button name="auto_confirm_all" string="Confirm all"  type="object" class="btn-primary" states="draft"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
